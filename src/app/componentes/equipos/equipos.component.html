@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="mb-3">
+    <h1 class="text-center">English Premier League</h1>
+  </div>
+  <div>
+    <h2>Equipos</h2>
+  </div>
+  <div class="row">
+    <div *ngFor="let equipo of listaEquipos" class="col-12 col-md-3 mt-3">
+      <div class="container text-center">
+        <img src="{{equipo.strTeamBadge}}" class="mx-auto mb-1" style="width: 100%;">
+        <a [routerLink]="['/equipo', equipo.idTeam]" class="btn btn-ver m-1">Ver</a>
+        <button (click)="favoritos(equipo.idTeam)" class="btn btn-warning m-1">Favorito</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-5 text-center">Favoritos</h2>
+  <div class="row">
+    <div *ngFor="let equipoF of listaFavoritos" class="col-12 col-md-3 mt-3">
+      <div class="container text-center">
+        <img src="{{equipoF.strTeamBadge}}" class="mx-auto mb-1" style="width: 100%;">
+        <a [routerLink]="['/equipo', equipoF.idTeam]" class="btn btn-success m-1">Ver</a>
+      </div>
+    </div>
+  </div>
+</div>

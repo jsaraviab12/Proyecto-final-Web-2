@@ -1,0 +1,116 @@
+﻿<div class="container">
+  <div *ngFor="let equipo of equipo">
+    <div class="row">
+      <div class="col-4">
+          <img class="w-100" src="{{equipo.strTeamBadge}}" alt="" style="width:200px;">
+      </div>
+      <div class="col-4">
+          <img class="w-100" src="{{equipo.strTeamLogo}}" alt="" style="width: 300px;">
+      </div>
+      <div class="col-4">
+          <img class="w-100" src="{{equipo.strTeamJersey}}" alt="">
+      </div>
+    </div>
+    <div>
+      <hr class="my-4">
+      <h2>{{equipo.strTeam}}</h2>
+      <p class="text-justify">{{equipo.strDescriptionEN}}</p>
+    </div>
+    <div>
+      <hr class="my-4">
+      <h2>Estadio</h2>
+      <img src="{{equipo.strStadiumThumb}}" alt="" class="w-100">
+      <div>
+        <h2>{{equipo.strStadium}}</h2>
+        <p class="text-justify">{{equipo.strStadiumDescription}}</p>
+      </div>
+    </div>
+    <hr class="my-4">
+    <h2 class="mb-4">Jugadores</h2>
+    <div class="row">
+      <div *ngFor="let j of listajugadores" class="col-6 col-md-3 mb-5">
+        <a [routerLink]="['/jugador-detalle', j.idPlayer]"><img src="{{j.strRender || j.strThumb || j.strCutout }}"
+            class="w-100"></a>
+        <p class="text-center">{{j.strPlayer}}</p>
+      </div>
+    </div>
+    <hr class="my-4">
+    <h2>Tabla de Posiciones</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>P.Jugados</th>
+            <th>P.Ganados</th>
+            <th>P.Empatados</th>
+            <th>P.Perdidos</th>
+            <th>G.Favor</th>
+            <th>G.Contra</th>
+            <th>Puntos</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let p of tPosiciones; let i = index">
+          <tr [ngClass]="{'table-success': p.teamid==equipo.idTeam}">
+            <td>{{i+1}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.played}}</td>
+            <td>{{p.win}}</td>
+            <td>{{p.draw}}</td>
+            <td>{{p.loss}}</td>
+            <td>{{p.goalsfor}}</td>
+            <td>{{p.goalsagainst}}</td>
+            <td>{{p.total}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="my-4">
+    <h2 class="mb-2">Resultados</h2>
+    <div class="row">
+      <div *ngFor="let r of resultados" class="col-md-3">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">{{r.dateEvent}}</div>
+          <div class="card-body">
+            <h5 class="card-title h">{{r.strHomeTeam}} vs {{r.strAwayTeam}}</h5>
+            <p class="card-text text-center">{{r.intHomeScore}} - {{r.intAwayScore}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr class="mb-2 my-4">
+    <h2>Eventos próximos</h2>
+    <div class="row">
+      <div *ngFor="let r of eventos" class="col-md-3">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">{{r.dateEvent}}</div>
+          <div class="card-body">
+            <h5 class="card-title h">{{r.strHomeTeam}} vs {{r.strAwayTeam}}</h5>
+            <p class="card-text text-center">{{r.intHomeScore}} - {{r.intAwayScore}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-2 my-4">
+    <h2>Todos los eventos</h2>
+    <div class="row">
+      <div *ngFor="let r of todosLosEventos" class="col-md-3">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">{{r.dateEvent}}</div>
+          <div class="card-body">
+            <h5 class="card-title h">{{r.strHomeTeam}} vs {{r.strAwayTeam}}</h5>
+            <p class="card-text text-center">{{r.intHomeScore}} - {{r.intAwayScore}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+<router-outlet></router-outlet>

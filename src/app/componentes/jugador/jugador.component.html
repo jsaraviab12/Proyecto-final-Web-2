@@ -1,0 +1,17 @@
+<div class="container">
+  <div *ngFor="let j of jugador" class="row" >
+     <div class="jumbotron text-center row justify-content-center">
+      <div>
+          <img src="{{j.strCutout || j.strThumb}}" alt="" class="rounded-circle">
+      </div>
+      <div>
+          <h1 class="display-4">{{j.strPlayer}}</h1>
+          <p class="lead"><strong>Posición de juego:</strong> {{j.strPosition || "Sin Registro"}}</p>
+          <p class="lead"><strong>Número: </strong>{{j.strNumber || "Sin Registro"}}</p>
+          <hr class="my-4">
+          <p class="text-justify">{{j.strDescriptionEN}}</p>
+          <a class="btn btn-primary btn-lg" [routerLink]="['/equipo', j.idTeam]" role="button">Atras</a>
+      </div>
+    </div>
+  </div>
+</div>
